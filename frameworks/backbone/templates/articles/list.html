@@ -1,0 +1,10 @@
+<h3>Articles</h3>
+
+<ul>
+	<% _.each(articles, function(article) { %>
+		<li>
+			<b><%= article.get('title') %></b> | 
+			<a href="<%= article.get('url') %>"><%= article.get('url') %></a>
+		</li>
+	<% }) %>
+</ul>
