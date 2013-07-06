@@ -17,15 +17,16 @@ require.config({
 			exports: '_'
 		},
 		backbone: {
-			deps: ['vendor/underscore/underscore-min', 'vendor/jquery/jquery-min'],
+			deps: ['vendor/jquery/jquery-min', 'vendor/underscore/underscore-min'],
 			exports: 'backbone'
 		}
 	}
 });
 
-require(['backbone'], function(){
+require(['jquery', 'underscore', 'backbone'], function(){
 	require(['routers/router'], function(Router) {
-		var router = new Router();
+		//Global router
+		router = new Router();
 
 		Backbone.history.start();
 	});

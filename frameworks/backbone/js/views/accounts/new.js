@@ -15,12 +15,19 @@ define(
 
 		initialize: function() {
 			this.model = new User();
+
+			this.listenTo(this.model, 'error', this.createError);
+			this.listenTo(this.model, 'sync', this.createSuccess);
 		},
 
 		render: function() {
 			this.$el.html(this.template());
 
 			return this;
+		},
+
+		teardown: function(){
+			this.stopListening();
 		},
 
 		create: function(e) {
@@ -32,18 +39,17 @@ define(
 				this.model.set(attr.name, attr.value);
 			}, this);
 
-			this.model.save({
-				success: this.createSuccess,
-				error: this.createError
-			});
+			this.model.save();
 		},
 
-		createSuccess: function(attrs, model, options) {
-			alert('user saved success');
+		createSuccess: function(attrs, response, options) {
+			this.teardown();
+
+			router.navigate('sessions/new', { trigger: true });
 		},
 
 		createError: function(attrs, xhr, options) {
-			alert('user saved error');
+			this.$('.form-errors').html(xhr.responseText);
 		}
 	});
 });
