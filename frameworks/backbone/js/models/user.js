@@ -3,9 +3,8 @@ define(function() {
 		urlRoot: '/users',
 
 		defaults: {
-			id: null,
 			username: null,
-			email: null,
+			email: null
 		}
 	});
 });

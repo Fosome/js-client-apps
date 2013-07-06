@@ -24,8 +24,21 @@ require.config({
 });
 
 require(['jquery', 'underscore', 'backbone'], function(){
-	require(['routers/router'], function(Router) {
-		//Global router
+	require(['routers/router', 'models/session'], function(Router, Session) {
+
+		//Global
+		sessionManager = {
+			token: null,
+
+			isLoggedIn: function() {
+				return !_.isNull(this.token);
+			},
+
+			setToken: function(token) {
+				this.token = token;
+			}
+		};
+
 		router = new Router();
 
 		Backbone.history.start();
