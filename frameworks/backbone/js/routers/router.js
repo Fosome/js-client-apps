@@ -3,13 +3,15 @@ define(
 		'views/sessions/new',
 		'views/accounts/new',
 		'views/accounts/edit',
-		'views/articles/articles'
+		'views/articles/articles',
+		'views/articles/new'
 	],
 	function(
 		SessionsNewView,
 		AccountsNewView,
 		AccountsEditView,
-		ArticlesView
+		ArticlesView,
+		ArticlesNewView
 	) {
 
 	return Backbone.Router.extend({
@@ -18,7 +20,8 @@ define(
 			'sessions/new': 'sessionsNew',
 			'accounts/new': 'accountsNew',
 			'account/edit': 'accountsEdit',
-			'articles': 'articlesIndex'
+			'articles': 'articlesIndex',
+			'articles/new': 'articlesNew'
 		},
 
 		index: function() {
@@ -46,7 +49,13 @@ define(
 		articlesIndex: function() {
 			console.log('routed to articles#index');
 
-			var articlesView = new ArticlesView().render();
+			var articles = new ArticlesView().render();
+		},
+
+		articlesNew: function() {
+			console.log('routed to articles#new');
+
+			var articlesNew = new ArticlesNewView().render();
 		}
 	});
 });

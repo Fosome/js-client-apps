@@ -4,11 +4,11 @@ define(['collections/articles', 'text!templates/articles/list.html'], function(A
 		template: _.template(articlesList),
 
 		initialize: function() {
-			this.collection = new ArticlesCollection([
-				{ user_id: 1, title: "Beans Beans the Magical Fruit", url: "http://www.google.com" },
-				{ user_id: 2, title: "Ruby + Backbone", url: "http://www.reddit.com" },
-				{ user_id: 3, title: "Hello World!!", url: "http://www.amazon.com" }
-			]);
+			this.collection = new ArticlesCollection();
+
+			this.listenToOnce(this.collection, 'sync', this.render);
+
+			this.collection.fetch();
 		},
 
 		render: function() {

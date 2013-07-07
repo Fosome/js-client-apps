@@ -1,8 +1,6 @@
 define(['models/article'], function(Article) {
-	var Articles = Backbone.Collection.extend({
+	return Backbone.Collection.extend({
 		url: '/articles',
 		model: Article
 	});
-
-	return Articles;
 });
