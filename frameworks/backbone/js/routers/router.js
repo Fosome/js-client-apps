@@ -4,6 +4,7 @@ define(
 		'views/accounts/new',
 		'views/accounts/edit',
 		'views/articles/articles',
+		'views/articles/article',
 		'views/articles/new'
 	],
 	function(
@@ -11,6 +12,7 @@ define(
 		AccountsNewView,
 		AccountsEditView,
 		ArticlesView,
+		ArticleView,
 		ArticlesNewView
 	) {
 
@@ -21,7 +23,8 @@ define(
 			'accounts/new': 'accountsNew',
 			'account/edit': 'accountsEdit',
 			'articles': 'articlesIndex',
-			'articles/new': 'articlesNew'
+			'articles/new': 'articlesNew',
+			'articles/:id': 'articlesShow'
 		},
 
 		index: function() {
@@ -56,6 +59,12 @@ define(
 			console.log('routed to articles#new');
 
 			var articlesNew = new ArticlesNewView().render();
+		},
+
+		articlesShow: function(id) {
+			console.log('routed to articles#show');
+
+			var articlesShow = new ArticleView({ articleId: id }).render();
 		}
 	});
 });

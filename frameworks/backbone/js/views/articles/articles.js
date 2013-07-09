@@ -1,4 +1,11 @@
-define(['collections/articles', 'text!templates/articles/list.html'], function(ArticlesCollection, articlesList) {
+define(
+	[
+		'collections/articles',
+		'views/articles/article_item',
+		'text!templates/articles/list.html'
+	],
+	function(ArticlesCollection, ArticleItemView, articlesList) {
+
 	return Backbone.View.extend({
 		el: "#content",
 		template: _.template(articlesList),
@@ -12,7 +19,16 @@ define(['collections/articles', 'text!templates/articles/list.html'], function(A
 		},
 
 		render: function() {
-			this.$el.html(this.template({ articles: this.collection.models }));
+			this.$el.html(this.template());
+
+			var list = document.createDocumentFragment();
+
+			this.collection.each(function(article) {
+				var articleItem = new ArticleItemView({ model: article });
+				list.appendChild(articleItem.render().el);
+			}, this);
+
+			$('.articles-list').html(list);
 
 			return this;
 		}
