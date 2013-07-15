@@ -39,6 +39,8 @@ define(
 				this.model.set(attr.name, attr.value);
 			}, this);
 
+			this.model.unset('points');
+
 			this.model.save();
 		},
 

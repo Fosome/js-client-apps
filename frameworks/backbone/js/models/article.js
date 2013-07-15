@@ -3,9 +3,9 @@ define(function() {
 		urlRoot: '/articles',
 
 		defaults: {
-			user_id: null,
 			title: null,
-			url: null
+			url: null,
+			points: null
 		}
 	});
 });
