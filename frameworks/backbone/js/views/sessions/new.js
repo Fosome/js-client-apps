@@ -42,7 +42,7 @@ define(
 			this.model.save();
 		},
 
-		createSuccess: function(attrs, response, options) {
+		createSuccess: function(model, response, options) {
 			sessionManager.setToken(response.token);
 
 			this.teardown();
@@ -50,10 +50,8 @@ define(
 			router.navigate('articles', { trigger: true });
 		},
 
-		createError: function(attrs, xhr, options) {
+		createError: function(model, xhr, options) {
 			this.$('.form-errors').html(xhr.responseText);
-
-			console.log(xhr);
 		}
 	});
 });

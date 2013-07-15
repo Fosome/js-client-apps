@@ -5,7 +5,7 @@ define(
 	function(articleItem) {
 
 	return Backbone.View.extend({
-		tag: 'li',
+		tagName: 'li',
 		template: _.template(articleItem),
 
 		events: {

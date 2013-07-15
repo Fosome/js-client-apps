@@ -3,7 +3,7 @@ define(['models/comment'], function(Comment) {
 		model: Comment,
 
 		url: function() {
-			return '/articles/1/comments'
+			return '/articles/' + this.articleId + '/comments';
 		}
 	});
 });

@@ -50,13 +50,13 @@ define(
 			this.model.save(attrs);
 		},
 
-		updateSuccess: function(attrs, response, options) {
+		updateSuccess: function(model, response, options) {
 			this.teardown();
 
 			router.navigate('articles', { trigger: true });
 		},
 
-		updateError: function(attrs, xhr, options) {
+		updateError: function(model, xhr, options) {
 			this.$('.form-errors').html(xhr.responseText);
 		}
 	});
